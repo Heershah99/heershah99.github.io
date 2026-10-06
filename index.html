@@ -7,7 +7,7 @@
 
   <!-- Open Graph Metadata for LinkedIn Preview -->
   <meta property="og:title" content="Heer Shah — Autonomous & Computer Engineering">
-  <meta property="og:description" content="Engineering intelligent systems, from hardware to software. Across robotics, embedded sensing, signal processing, and applied ML. UAE Golden Visa Holder.">
+  <meta property="og:description" content="Engineering intelligent systems, from software to hardware. Across robotics, embedded sensing, signal processing, and applied ML. UAE Golden Visa Holder.">
   <meta property="og:image" content="https://heershah99.github.io/profile.jpg">
   <meta property="og:url" content="https://heershah99.github.io/">
   <meta property="og:type" content="website">
@@ -292,6 +292,52 @@
       max-height: 180px;
     }
 
+    /* LENSO Pipeline Flow Visualization */
+    .pipeline-container {
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--navy);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .pipeline-title {
+      font-size: 0.82rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .pipeline-step {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 6px;
+      color: var(--ink);
+      text-align: center;
+      min-width: 100px;
+      flex: 1;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pipeline-arrow {
+      color: var(--amber);
+      font-weight: bold;
+    }
+
     .card-footer {
       margin-top: 18px;
       padding-top: 14px;
@@ -369,6 +415,8 @@
       h1.hero-title { font-size: 2.1rem; }
       .card { padding: 20px; }
       .term-modal { width: calc(100vw - 48px); right: 24px; }
+      .pipeline-flow { flex-direction: column; }
+      .pipeline-arrow { display: none; }
     }
   </style>
 </head>
@@ -388,7 +436,7 @@
       <img src="profile.jpg" alt="Heer Shah" class="profile-img" onerror="this.style.display='none'">
 
       <h1 class="hero-title">
-        Engineering intelligent systems, from hardware to software.
+        Engineering intelligent systems, from software to hardware.
       </h1>
 
       <div class="hero-subtitle">
@@ -396,7 +444,7 @@
       </div>
 
       <p class="hero-bio">
-        Across robotics, embedded sensing, signal processing, and software — from an offline NLP pipeline running on a Raspberry Pi, to a traffic platform that cut school congestion by 65% for Dubai's RTA. I build for live data, limited hardware, and non-ideal conditions — working toward a future in quantum-enabled autonomous robotics.
+        Across robotics, embedded sensing, signal processing, and software — from an offline NLP pipeline running on a Raspberry Pi, to a traffic platform that cut school congestion by 65% for Dubai[...]
       </p>
 
       <div class="social-links">
@@ -525,7 +573,7 @@
           </div>
           <div class="card-body">
             <ul>
-              <li>Evaluated and optimized large language models using Promptfoo and Opik frameworks, building test suites that improved response accuracy and reliability — direct experience with LLM eval infrastructure.</li>
+              <li>Evaluated and optimized large language models using Promptfoo and Opik frameworks, building test suites that improved response accuracy and reliability — direct experience with LLM[...]
               <li>Built AI prototypes integrating Azure chatbot services with Power BI dashboards via SharePoint, shipping real-time analytics features for enterprise clients.</li>
               <li>Benchmarked model performance against evaluation metrics and translated results into concrete engineering recommendations for the team.</li>
             </ul>
@@ -552,7 +600,7 @@
           <div class="card-body">
             <ul>
               <li>Completed instructor-led training covering SAP S/4HANA Cloud Public Edition.</li>
-              <li>Undertaking the SAP S/4HANA Cloud Public Edition Learning Journey as part of the programme, building practical understanding of enterprise software and cloud-based business processes.</li>
+              <li>Undertaking the SAP S/4HANA Cloud Public Edition Learning Journey as part of the programme, building practical understanding of enterprise software and cloud-based business processes[...]
               <li>Working toward SAP certification through the programme's Learning Hub pathway.</li>
             </ul>
           </div>
@@ -610,9 +658,31 @@
           </div>
           <div class="card-body">
             <ul>
-              <li>Designed and integrated the NLP layer of a pipeline converting spoken language into real-time sign-language animation, running fully on local hardware (Raspberry Pi) for privacy and offline use.</li>
-              <li>Built text normalization, tokenization, lemmatization, synonym mapping, fuzzy correction, keyword extraction, and intent/domain classification stages feeding gloss conversion and animation generation.</li>
+              <li>Designed and integrated the NLP layer of a pipeline converting spoken language into real-time sign-language animation, running fully on local hardware (Raspberry Pi) for privacy and latency optimization.</li>
+              <li>Built text normalization, tokenization, lemmatization, synonym mapping, fuzzy correction, keyword extraction, and intent/domain classification stages feeding gloss conversion and animation rendering.</li>
             </ul>
+
+            <!-- LENSO NLP Pipeline Visualization -->
+            <div class="pipeline-container">
+              <div class="pipeline-title">LENSO NLP PIPELINE ARCHITECTURE</div>
+              <div class="pipeline-flow">
+                <div class="pipeline-step"><strong>Audio Input</strong><br>Whisper STT</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Text Normalization</strong><br>Clean & Standardize</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Tokenization</strong><br>Word Segmentation</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Lemmatization</strong><br>Root Form Extraction</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Synonym Mapping</strong><br>Fuzzy Matching</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Intent & Domain</strong><br>Classification</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Gloss Conversion</strong><br>Sign Notation</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step"><strong>Avatar Animation</strong><br>Real-Time Render</div>
+              </div>
+            </div>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
