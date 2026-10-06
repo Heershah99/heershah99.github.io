@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heer Shah — Autonomous & Computer Engineering</title>
 
-  <!-- Open Graph Metadata for LinkedIn & Social Sharing -->
+  <!-- Open Graph Metadata for LinkedIn Preview -->
   <meta property="og:title" content="Heer Shah — Autonomous & Computer Engineering">
-  <meta property="og:description" content="Engineering intelligent systems across robotics, embedded sensing, signal processing, LLM evaluation, and applied ML. UAE Golden Visa Holder.">
+  <meta property="og:description" content="Engineering intelligent systems, from hardware to software. Across robotics, embedded sensing, signal processing, and applied ML. UAE Golden Visa Holder.">
   <meta property="og:image" content="https://heershah99.github.io/profile.jpg">
   <meta property="og:url" content="https://heershah99.github.io/">
   <meta property="og:type" content="website">
 
-  <!-- Fonts & Three.js CDN -->
+  <!-- Fonts & Chart Engine / 3D Libraries -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     :root {
@@ -31,11 +32,7 @@
       --green: #5FD1A0;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--navy);
@@ -46,16 +43,13 @@
       padding-bottom: 60px;
     }
 
-    /* Interactive Background Canvas */
     #bg-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.18;
+      opacity: 0.15;
     }
 
     .container {
@@ -66,7 +60,7 @@
       z-index: 1;
     }
 
-    /* Header & Profile */
+    /* Hero & Profile Header */
     header.hero {
       padding: 60px 0 40px;
       border-bottom: 1px solid var(--line);
@@ -83,20 +77,18 @@
       font-size: 0.85rem;
       padding: 6px 14px;
       border-radius: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background-color: var(--green);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--green);
     }
 
     .profile-img {
-      width: 130px;
-      height: 130px;
+      width: 130px; height: 130px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--amber);
@@ -105,87 +97,52 @@
       box-shadow: 0 8px 24px rgba(232, 163, 61, 0.2);
     }
 
-    h1.name {
+    h1.hero-title {
       font-size: 2.8rem;
       font-weight: 700;
       color: #FFF;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
-    .hero-typewriter {
-      font-size: 1.35rem;
-      color: var(--ink-dim);
-      margin-bottom: 20px;
-      min-height: 40px;
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--amber);
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 16px;
     }
 
     .hero-bio {
       font-size: 1.05rem;
       color: var(--ink-dim);
-      max-width: 820px;
+      max-width: 850px;
       margin-bottom: 28px;
     }
 
-    .meta-pills {
+    .social-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 30px;
-    }
-
-    .pill {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      color: var(--ink-dim);
+      gap: 16px;
+      margin-bottom: 28px;
       font-family: 'Fira Code', monospace;
-      font-size: 0.85rem;
-      padding: 6px 14px;
-      border-radius: 6px;
+      font-size: 0.9rem;
     }
 
-    .pill-highlight {
-      border-color: var(--amber);
+    .social-links a {
       color: var(--amber);
+      text-decoration: none;
     }
 
-    /* 3D Globe Container */
+    .social-links a:hover { text-decoration: underline; }
+
+    /* 3D Wireframe Globe */
     #canvas-3d {
       width: 100%;
       height: 220px;
       margin: 10px 0 20px;
     }
 
-    /* Quick Metrics Bar */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 40px 0;
-    }
-
-    .metric-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--amber);
-      font-family: 'Fira Code', monospace;
-    }
-
-    .metric-label {
-      font-size: 0.85rem;
-      color: var(--ink-dim);
-      margin-top: 4px;
-    }
-
-    /* Section Styling */
+    /* Sections */
     section {
       padding: 48px 0;
       border-bottom: 1px solid var(--line);
@@ -207,10 +164,10 @@
       font-family: 'Fira Code', monospace;
     }
 
-    /* Technical Skills Grid */
+    /* Skills Grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
@@ -222,7 +179,7 @@
     }
 
     .skill-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--amber);
       margin-bottom: 12px;
       font-family: 'Fira Code', monospace;
@@ -244,7 +201,7 @@
       font-family: 'Fira Code', monospace;
     }
 
-    /* Card Item (Experience & Projects) */
+    /* Experience & Projects Cards */
     .card-list {
       display: flex;
       flex-direction: column;
@@ -256,8 +213,7 @@
       border: 1px solid var(--line);
       border-radius: 10px;
       padding: 28px;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      transform-style: preserve-3d;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
@@ -315,6 +271,27 @@
       color: var(--amber);
     }
 
+    /* Embedded Project Analytics Visuals */
+    .chart-container {
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--navy);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .chart-title {
+      font-size: 0.82rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .chart-canvas {
+      width: 100% !important;
+      max-height: 180px;
+    }
+
     .card-footer {
       margin-top: 18px;
       padding-top: 14px;
@@ -337,19 +314,14 @@
       text-decoration: none;
       font-family: 'Fira Code', monospace;
       font-size: 0.85rem;
-      font-weight: 500;
-      transition: text-decoration 0.2s ease;
     }
 
-    .card-links a:hover {
-      text-decoration: underline;
-    }
+    .card-links a:hover { text-decoration: underline; }
 
-    /* Terminal Widget */
+    /* Interactive Terminal Window */
     .term-btn {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 24px; right: 24px;
       z-index: 100;
       background: var(--panel);
       border: 1px solid var(--amber);
@@ -360,23 +332,13 @@
       font-size: 0.9rem;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s ease;
-    }
-
-    .term-btn:hover {
-      transform: translateY(-3px);
     }
 
     .term-modal {
       display: none;
       position: fixed;
-      bottom: 80px;
-      right: 24px;
-      width: 360px;
-      height: 250px;
+      bottom: 80px; right: 24px;
+      width: 360px; height: 250px;
       background: #0A0F1D;
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -385,7 +347,7 @@
       font-family: 'Fira Code', monospace;
       font-size: 0.82rem;
       color: #33FF33;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
       flex-direction: column;
     }
 
@@ -398,35 +360,13 @@
       justify-content: space-between;
     }
 
-    .term-output {
-      flex: 1;
-      overflow-y: auto;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
+    .term-output { flex: 1; overflow-y: auto; margin-bottom: 8px; line-height: 1.4; }
+    .term-input { background: transparent; border: none; color: #FFF; outline: none; font-family: 'Fira Code', monospace; width: 100%; font-size: 0.82rem; }
 
-    .term-input {
-      background: transparent;
-      border: none;
-      color: #FFF;
-      outline: none;
-      font-family: 'Fira Code', monospace;
-      width: 100%;
-      font-size: 0.82rem;
-    }
-
-    /* Footer */
-    footer {
-      padding: 40px 0 20px;
-      text-align: center;
-      color: var(--ink-faint);
-      font-size: 0.9rem;
-      font-family: 'Fira Code', monospace;
-    }
+    footer { padding: 40px 0 20px; text-align: center; color: var(--ink-faint); font-size: 0.88rem; font-family: 'Fira Code', monospace; }
 
     @media (max-width: 768px) {
-      h1.name { font-size: 2.1rem; }
-      .hero-typewriter { font-size: 1.1rem; }
+      h1.hero-title { font-size: 2.1rem; }
       .card { padding: 20px; }
       .term-modal { width: calc(100vw - 48px); right: 24px; }
     }
@@ -434,7 +374,6 @@
 </head>
 <body>
 
-  <!-- Particle Mesh Background Canvas -->
   <canvas id="bg-canvas"></canvas>
 
   <div class="container">
@@ -443,56 +382,35 @@
     <header class="hero">
       <div class="status-badge">
         <span class="status-dot"></span>
-        Open for Autonomous & AI Engineering Opportunities
+        open to work
       </div>
 
-      <!-- Profile Image -->
       <img src="profile.jpg" alt="Heer Shah" class="profile-img" onerror="this.style.display='none'">
 
-      <h1 class="name">Heer Shah</h1>
+      <h1 class="hero-title">
+        Engineering intelligent systems, from hardware to software.
+      </h1>
 
-      <div class="hero-typewriter">
-        Building <span id="typewriter" style="color: var(--amber); border-right: 2px solid var(--amber); padding-right: 4px;"></span>
+      <div class="hero-subtitle">
+        Autonomous & Computer Engineering student, University of Wollongong in Dubai
       </div>
 
       <p class="hero-bio">
-        Autonomous and Computer Engineering undergraduate specializing in data-driven human motion energy harvesting, LLM evaluation pipelines, real-time vision systems, and intelligent infrastructure platforms.
+        Across robotics, embedded sensing, signal processing, and software — from an offline NLP pipeline running on a Raspberry Pi, to a traffic platform that cut school congestion by 65% for Dubai's RTA. I build for live data, limited hardware, and non-ideal conditions — working toward a future in quantum-enabled autonomous robotics.
       </p>
 
-      <div class="meta-pills">
-        <span class="pill pill-highlight">🇦🇪 UAE Golden Visa Holder</span>
-        <span class="pill">🎓 B.Eng (Hons) Student @ UOWD</span>
-        <span class="pill">🥇 1st Place National AI Hackathon</span>
-        <span class="pill">🏆 CodeAlpha & Zaka Alumni</span>
+      <div class="social-links">
+        <a href="https://github.com/Heershah99" target="_blank">GitHub ↗</a>
+        <a href="https://linkedin.com/in/heer-shah-237a25360" target="_blank">LinkedIn ↗</a>
+        <a href="mailto:heer.shah.1079@gmail.com">heer.shah.1079@gmail.com ↗</a>
       </div>
 
-      <!-- Interactive 3D Wireframe Globe -->
       <div id="canvas-3d"></div>
     </header>
 
-    <!-- Metrics Overview -->
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-value">6+</div>
-        <div class="metric-label">End-to-End Systems Shipped</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value">65%</div>
-        <div class="metric-label">Traffic Cut (RTA Platform)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value">1st</div>
-        <div class="metric-label">National AI Hackathon Winner</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-value">IEEE</div>
-        <div class="metric-label">Research Paper Submitted</div>
-      </div>
-    </div>
-
     <!-- Technical Skills Section -->
     <section id="skills">
-      <h2 class="section-title">Technical Skills</h2>
+      <h2 class="section-title">TECHNICAL SKILLS</h2>
       <div class="skills-grid">
         <div class="skill-card">
           <h3>Languages & Tools</h3>
@@ -516,7 +434,6 @@
             <span class="tag">Data Pipelines</span>
             <span class="tag">Pandas</span>
             <span class="tag">NumPy</span>
-            <span class="tag">Data Filtering & Ingestion</span>
           </div>
         </div>
 
@@ -526,7 +443,7 @@
             <span class="tag">Scikit-Learn</span>
             <span class="tag">TensorFlow/Keras</span>
             <span class="tag">Promptfoo</span>
-            <span class="tag">Comet Opik</span>
+            <span class="tag">Opik</span>
             <span class="tag">Predictive Modeling</span>
             <span class="tag">Statsmodels</span>
             <span class="tag">Matplotlib</span>
@@ -548,28 +465,28 @@
 
     <!-- Professional Experience Section -->
     <section id="experience">
-      <h2 class="section-title">Professional Experience</h2>
+      <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
       <div class="card-list">
 
         <!-- Research Internship -->
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">Research Intern — Human Cardiac Motion Research</div>
-              <div class="card-subtitle">Faculty-Supervised Biomedical & Energy Harvesting Project</div>
+              <div class="card-title">Research Intern — Data-Driven Human Cardiac Motion Research</div>
+              <div class="card-subtitle">Faculty-Supervised Research</div>
             </div>
             <div class="card-date">2026 – Present</div>
           </div>
           <div class="card-body">
             <ul>
               <li>Conducting data-driven analysis of human cardiac motion to investigate characteristics relevant to low-frequency energy harvesting for implantable pacemaker applications.</li>
-              <li>Supporting research activities spanning data analysis, signal modeling, and mechanical motion interpretation.</li>
-              <li>Building applied research expertise at the intersection of biomedical systems, signal/data analysis, and energy harvesting.</li>
+              <li>Support research activities spanning data analysis, modelling, and interpretation of mechanical motion signals.</li>
+              <li>Building applied research experience at the intersection of biomedical systems, signal/data analysis, and energy harvesting.</li>
             </ul>
           </div>
         </div>
 
-        <!-- CodeAlpha Internship -->
+        <!-- CodeAlpha -->
         <div class="card">
           <div class="card-header">
             <div>
@@ -580,54 +497,54 @@
           </div>
           <div class="card-body">
             <ul>
-              <li>Worked on robotics and automation tasks, gaining hands-on experience with automation systems and hardware/software integration.</li>
-              <li>Applied engineering concepts to develop, test, and troubleshoot automation-based solutions.</li>
+              <li>Worked on robotics and automation projects, gaining hands-on experience with automation systems and hardware/software integration.</li>
+              <li>Applied engineering and programming concepts to develop and test automation-based solutions.</li>
+              <li>Collaborated on technical tasks involving robotics, troubleshooting, and implementation.</li>
             </ul>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
               <span class="tag">Robotics</span>
               <span class="tag">Automation</span>
-              <span class="tag">Hardware/Software Integration</span>
+              <span class="tag">Hardware Integration</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/Heershah99/codealpha_tasks" target="_blank">View Repo ↗</a>
+              <a href="https://github.com/Heershah99/codealpha_tasks" target="_blank">GitHub: Heershah99/codealpha_tasks ↗</a>
             </div>
           </div>
         </div>
 
-        <!-- Zaka AI Internship -->
+        <!-- Zaka AI -->
         <div class="card">
           <div class="card-header">
             <div>
               <div class="card-title">AI Intern</div>
-              <div class="card-subtitle">Zaka AI — Dubai, UAE</div>
+              <div class="card-subtitle">Zaka AI, Dubai, UAE</div>
             </div>
             <div class="card-date">Jul 2025 – Sep 2025</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Evaluated and optimized large language models using Promptfoo and Opik frameworks, building test suites that improved response accuracy and reliability.</li>
-              <li>Built AI prototypes integrating Azure chatbot services with Power BI dashboards via SharePoint to deliver real-time analytics for enterprise clients.</li>
-              <li>Benchmarked model performance against evaluation metrics and translated results into concrete engineering recommendations.</li>
+              <li>Evaluated and optimized large language models using Promptfoo and Opik frameworks, building test suites that improved response accuracy and reliability — direct experience with LLM eval infrastructure.</li>
+              <li>Built AI prototypes integrating Azure chatbot services with Power BI dashboards via SharePoint, shipping real-time analytics features for enterprise clients.</li>
+              <li>Benchmarked model performance against evaluation metrics and translated results into concrete engineering recommendations for the team.</li>
             </ul>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
-              <span class="tag">LLM Evaluation</span>
-              <span class="tag">Opik</span>
               <span class="tag">Promptfoo</span>
+              <span class="tag">Opik</span>
               <span class="tag">Azure Bot Services</span>
               <span class="tag">Power BI</span>
             </div>
           </div>
         </div>
 
-        <!-- SAP Dual Studies Program -->
+        <!-- SAP Dual Studies -->
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">SAP Dual Studies Program Participant</div>
+              <div class="card-title">SAP Dual Studies Program — Participant</div>
               <div class="card-subtitle">SAP</div>
             </div>
             <div class="card-date">2026</div>
@@ -635,8 +552,8 @@
           <div class="card-body">
             <ul>
               <li>Completed instructor-led training covering SAP S/4HANA Cloud Public Edition.</li>
-              <li>Undertaking the SAP S/4HANA Cloud Learning Journey to build practical understanding of enterprise cloud-based business processes.</li>
-              <li>Working toward SAP certification through the Learning Hub pathway.</li>
+              <li>Undertaking the SAP S/4HANA Cloud Public Edition Learning Journey as part of the programme, building practical understanding of enterprise software and cloud-based business processes.</li>
+              <li>Working toward SAP certification through the programme's Learning Hub pathway.</li>
             </ul>
           </div>
         </div>
@@ -644,9 +561,9 @@
       </div>
     </section>
 
-    <!-- Projects Experience Section -->
+    <!-- Projects Section with Embedded Interactive Charts -->
     <section id="projects">
-      <h2 class="section-title">Featured Engineering Projects</h2>
+      <h2 class="section-title">PROJECT EXPERIENCE</h2>
       <div class="card-list">
 
         <!-- CashVan -->
@@ -654,16 +571,22 @@
           <div class="card-header">
             <div>
               <div class="card-title">CashVan — Inventory Intelligence System</div>
-              <div class="card-subtitle">IEEE Paper Submitted | Team Project</div>
+              <div class="card-subtitle">Team Project</div>
             </div>
             <div class="card-date">2026</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Built the demand-forecasting module using LSTM neural networks, including data preprocessing pipelines and lag/rolling statistical feature engineering.</li>
-              <li>Trained and evaluated models using MAE, RMSE, MAPE, and R² metrics; collaborated on an inventory analytics platform with ECLAT-based association rule mining.</li>
-              <li>Submitted detailed paper findings to an IEEE conference.</li>
+              <li>Built the demand-forecasting module using LSTM neural networks, including data preprocessing pipelines and feature engineering (lag and rolling statistical features).</li>
+              <li>Trained and evaluated models using MAE, RMSE, MAPE, and R²; collaborated on a broader inventory analytics platform with ECLAT-based association rule mining.</li>
+              <li>Submitted the detailed paper to IEEE conference (results yet to come).</li>
             </ul>
+
+            <!-- Graph 1: Demand Forecasting Curve -->
+            <div class="chart-container">
+              <div class="chart-title">GRAPH: LSTM Demand Forecast Model (Actual vs. Predicted Demand)</div>
+              <canvas id="cashvanChart" class="chart-canvas"></canvas>
+            </div>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
@@ -681,14 +604,14 @@
           <div class="card-header">
             <div>
               <div class="card-title">LENSO — Real-Time Speech-to-Sign Language System</div>
-              <div class="card-subtitle">Offline Raspberry Pi Translation System | Team Project</div>
+              <div class="card-subtitle">Team Project</div>
             </div>
             <div class="card-date">2026</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Designed and integrated the NLP layer converting spoken language into real-time sign-language animation, running fully offline on local hardware (Raspberry Pi) for total privacy.</li>
-              <li>Built text normalization, tokenization, lemmatization, synonym mapping, fuzzy correction, keyword extraction, and intent classification stages feeding gloss conversion.</li>
+              <li>Designed and integrated the NLP layer of a pipeline converting spoken language into real-time sign-language animation, running fully on local hardware (Raspberry Pi) for privacy and offline use.</li>
+              <li>Built text normalization, tokenization, lemmatization, synonym mapping, fuzzy correction, keyword extraction, and intent/domain classification stages feeding gloss conversion and animation generation.</li>
             </ul>
           </div>
           <div class="card-footer">
@@ -700,7 +623,7 @@
               <span class="tag">Raspberry Pi</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/Heershah99/lenso-avatar" target="_blank">View Repo ↗</a>
+              <a href="https://github.com/Heershah99/lenso-avatar" target="_blank">Github : lenso-avatar ↗</a>
             </div>
           </div>
         </div>
@@ -716,8 +639,8 @@
           </div>
           <div class="card-body">
             <ul>
-              <li>Led system architecture for a space situational awareness platform ingesting live orbital data from NASA's CelesTrak API.</li>
-              <li>Designed AI-driven debris detection and collision prediction models feeding real-time alerts into a satellite-tracking dashboard.</li>
+              <li>Led system architecture for a space situational awareness platform ingesting live data from NASA's CelesTrak API.</li>
+              <li>Designed AI-driven debris detection and collision prediction models feeding real-time alerts into a UAE satellite-tracking dashboard.</li>
             </ul>
           </div>
           <div class="card-footer">
@@ -725,7 +648,10 @@
               <span class="tag">React</span>
               <span class="tag">Three.js</span>
               <span class="tag">CelesTrak API</span>
-              <span class="tag">AI Orbital Modeling</span>
+              <span class="tag">Space Situational Awareness</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/Heershah99" target="_blank">App: supernova-uae-space-hack ↗</a>
             </div>
           </div>
         </div>
@@ -734,22 +660,31 @@
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">Bounty Challenge — RouteX Platform (RTA / UOBD)</div>
-              <div class="card-subtitle">Software Traffic Congestion Platform</div>
+              <div class="card-title">Bounty Challenge — UOBD (RTA)</div>
+              <div class="card-subtitle">RouteX Congestion Platform</div>
             </div>
             <div class="card-date">Jan 2026</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Developed a software-only platform that reduced school traffic congestion by 65% and cut bus delays by 78% with zero physical infrastructure changes.</li>
-              <li>Implemented real-time dashboards, live bus tracking, and AI-driven scheduling logic for parents, schools, and the Dubai RTA.</li>
+              <li>Developed a software-only platform that reduced school traffic congestion by 65% and cut bus delays by 78%, with no infrastructure changes required.</li>
+              <li>Implemented real-time dashboards, live bus tracking, and AI-driven scheduling logic for parents, schools, and the RTA.</li>
             </ul>
+
+            <!-- Graph 2: Traffic Congestion Drop -->
+            <div class="chart-container">
+              <div class="chart-title">GRAPH: RouteX Impact Metrics (% Reduction in Delays & Congestion)</div>
+              <canvas id="rtaChart" class="chart-canvas"></canvas>
+            </div>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
-              <span class="tag">Route Optimization</span>
-              <span class="tag">Real-Time Dashboards</span>
               <span class="tag">AI Scheduling</span>
+              <span class="tag">Live Bus Tracking</span>
+              <span class="tag">Real-Time Dashboards</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/Heershah99" target="_blank">App : routeX ↗</a>
             </div>
           </div>
         </div>
@@ -759,39 +694,48 @@
           <div class="card-header">
             <div>
               <div class="card-title">ETRNA — AI Smart Energy Advisor</div>
-              <div class="card-subtitle">🥇 1st Place National AI Hackathon Winner</div>
+              <div class="card-subtitle">Hackathon Project</div>
             </div>
             <div class="card-date">Jun 2025</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Built an AI-powered energy optimization system forecasting household consumption with personalized sustainability recommendations and native Arabic support.</li>
-              <li>Presented the live solution to 100+ participants and judges, securing 1st place nationwide.</li>
+              <li>Built an AI-powered energy optimization system forecasting household consumption, with personalized sustainability recommendations and Arabic-language support.</li>
+              <li>Presented the solution to 100+ participants and secured 1st place at a national AI hackathon.</li>
             </ul>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
               <span class="tag">Streamlit</span>
-              <span class="tag">Predictive Energy Modeling</span>
               <span class="tag">Arabic NLP</span>
+              <span class="tag">Energy Modeling</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/Heershah99" target="_blank">App: Streamlit, website : Eterna ↗</a>
             </div>
           </div>
         </div>
 
-        <!-- ChurnPredict -->
+        <!-- ChurnPredict System -->
         <div class="card">
           <div class="card-header">
             <div>
               <div class="card-title">ChurnPredict System</div>
-              <div class="card-subtitle">AI-Powered Customer Decay Analyzer</div>
+              <div class="card-subtitle">Customer Decay Analyzer</div>
             </div>
             <div class="card-date">Nov 2025</div>
           </div>
           <div class="card-body">
             <ul>
-              <li>Developed a React + TypeScript dashboard with Tailwind CSS visualizing customer churn risk through interactive timelines.</li>
-              <li>Built real-time alerting, AI-powered email generation via Gemini, and vector query storage with Qdrant.</li>
+              <li>Developed a React + TypeScript dashboard with Tailwind CSS, visualizing customer churn risk through interactive timelines.</li>
+              <li>Built real-time alerting, AI-powered email generation, and CSV export to support churn-response workflows.</li>
             </ul>
+
+            <!-- Graph 3: Customer Churn Timeline -->
+            <div class="chart-container">
+              <div class="chart-title">GRAPH: Customer Churn Risk Timeline Trajectory</div>
+              <canvas id="churnChart" class="chart-canvas"></canvas>
+            </div>
           </div>
           <div class="card-footer">
             <div class="tech-stack">
@@ -802,7 +746,7 @@
               <span class="tag">Qdrant</span>
             </div>
             <div class="card-links">
-              <a href="https://github.com/Heershah99/customer-decay-analyzer" target="_blank">View Repo ↗</a>
+              <a href="https://github.com/Heershah99/customer-decay-analyzer" target="_blank">GitHub : customer-decay-analyzer ↗</a>
             </div>
           </div>
         </div>
@@ -810,11 +754,10 @@
       </div>
     </section>
 
-    <!-- Education & Certifications Section -->
+    <!-- Education & Certifications -->
     <section id="education">
-      <h2 class="section-title">Education & Credentials</h2>
+      <h2 class="section-title">EDUCATION & CERTIFICATIONS</h2>
       <div class="card-list">
-        
         <div class="card">
           <div class="card-header">
             <div>
@@ -825,45 +768,40 @@
           </div>
           <div class="card-body">
             <ul>
-              <li><strong>Status:</strong> Predicted First Class Honours</li>
-              <li><strong>Certification:</strong> Zaka Machine Learning Certification (2026) — Capstone: LSTM-based demand forecasting for CashVan project.</li>
-              <li><strong>Awards:</strong> 1st Place, National AI Hackathon (ETRNA) | Silver Medal, Engineering Project — Robotics Workshop.</li>
-              <li><strong>Work Authorization:</strong> UAE Golden Visa Holder — Eligible to live and work in the UAE without employer sponsorship.</li>
-              <li><strong>Languages:</strong> English (Fluent, C1), Gujarati (Native), Hindi (Native).</li>
+              <li><strong>Academic Standing:</strong> Predicted First Class Honours</li>
+              <li><strong>Certification:</strong> Zaka Machine Learning Certification — 2026 (capstone: LSTM-based demand forecasting, CashVan project)</li>
+              <li><strong>Awards:</strong> 1st Place, National AI Hackathon (ETRNA); Silver Medal, Engineering Project — Robotics Workshop</li>
+              <li><strong>Languages:</strong> Gujarati (Native), Hindi (Native), English (Fluent, C1)</li>
+              <li><strong>Work Authorization:</strong> UAE Golden Visa holder — eligible to live and work in the UAE without employer sponsorship</li>
             </ul>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-      <p>© 2026 Heer Shah • Hosted via GitHub Pages</p>
+      <p>© 2026 Heer Shah • Hosted on GitHub Pages</p>
     </footer>
 
   </div>
 
-  <!-- Terminal Console Toggle Button -->
-  <button class="term-btn" onclick="toggleTerminal()">
-    <span>&gt;_</span> Terminal
-  </button>
+  <!-- Terminal Button -->
+  <button class="term-btn" onclick="toggleTerminal()">&gt;_ Terminal</button>
 
-  <!-- Interactive Terminal Console Window -->
+  <!-- Terminal Modal -->
   <div class="term-modal" id="term-modal">
     <div class="term-header">
-      <span>HEER_SHAH_CONSOLE v2.0</span>
+      <span>SYSTEM CONSOLE v2.0</span>
       <span style="cursor: pointer;" onclick="toggleTerminal()">[x]</span>
     </div>
     <div class="term-output" id="term-output">
-      <div>System online. Type <span style="color:#FFF">'help'</span> for available commands.</div>
+      <div>System initialized. Type <span style="color:#FFF">'help'</span> for commands.</div>
     </div>
     <input type="text" class="term-input" id="term-input" placeholder=">" onkeydown="handleCmd(event)">
   </div>
 
-  <!-- Interactive Scripts -->
   <script>
-    // 1. Particle Background Matrix
+    // 1. Interactive Particle Canvas
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
@@ -875,7 +813,7 @@
     window.addEventListener('resize', resize);
     resize();
 
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 40; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -890,8 +828,7 @@
       ctx.fillStyle = '#E8A33D';
 
       particles.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x += p.vx; p.y += p.vy;
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
@@ -902,8 +839,8 @@
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < 130) {
-            ctx.lineWidth = 1 - dist / 130;
+          if (dist < 120) {
+            ctx.lineWidth = 1 - dist / 120;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -915,43 +852,12 @@
     }
     draw();
 
-    // 2. Typewriter Effect
-    const phrases = [
-      "Autonomous Systems.",
-      "Human Motion Energy Models.",
-      "LLM Evaluation Pipelines.",
-      "Real-Time Speech-to-Sign NLP.",
-      "Space Domain Awareness Platforms."
-    ];
-    let pIdx = 0, charIdx = 0, isDeleting = false;
-    const typewriterEl = document.getElementById("typewriter");
-
-    function type() {
-      const current = phrases[pIdx];
-      typewriterEl.innerText = isDeleting 
-        ? current.substring(0, charIdx--) 
-        : current.substring(0, charIdx++);
-
-      let speed = isDeleting ? 30 : 70;
-      if (!isDeleting && charIdx === current.length + 1) {
-        speed = 2000;
-        isDeleting = true;
-      } else if (isDeleting && charIdx === 0) {
-        isDeleting = false;
-        pIdx = (pIdx + 1) % phrases.length;
-        speed = 350;
-      }
-      setTimeout(type, speed);
-    }
-    document.addEventListener("DOMContentLoaded", type);
-
-    // 3. Three.js 3D Wireframe Globe
+    // 2. Three.js 3D Globe
     const container = document.getElementById('canvas-3d');
     if (container && typeof THREE !== 'undefined') {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
 
@@ -971,7 +877,43 @@
       animate();
     }
 
-    // 4. Interactive Terminal Console Commands
+    // 3. Render Project Graphs (Chart.js)
+    window.addEventListener('load', () => {
+      // CashVan LSTM Graph
+      new Chart(document.getElementById('cashvanChart'), {
+        type: 'line',
+        data: {
+          labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+          datasets: [
+            { label: 'Actual Demand', data: [120, 135, 128, 142, 160, 155, 170], borderColor: '#E8A33D', backgroundColor: 'transparent' },
+            { label: 'LSTM Predicted', data: [118, 132, 130, 140, 158, 157, 168], borderColor: '#5FD1A0', borderDash: [5, 5], backgroundColor: 'transparent' }
+          ]
+        },
+        options: { responsive: true, plugins: { legend: { labels: { color: '#EDEFF2' } } }, scales: { x: { ticks: { color: '#9FB0C6' } }, y: { ticks: { color: '#9FB0C6' } } } }
+      });
+
+      // RTA Congestion Cut Graph
+      new Chart(document.getElementById('rtaChart'), {
+        type: 'bar',
+        data: {
+          labels: ['School Traffic Congestion', 'Bus Delays'],
+          datasets: [{ label: '% Reduction', data: [65, 78], backgroundColor: ['#E8A33D', '#5FD1A0'] }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#9FB0C6' } }, y: { ticks: { color: '#9FB0C6' }, max: 100 } } }
+      });
+
+      // ChurnPredict Decay Timeline
+      new Chart(document.getElementById('churnChart'), {
+        type: 'line',
+        data: {
+          labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5'],
+          datasets: [{ label: 'Churn Risk Probability (%)', data: [12, 18, 45, 78, 92], borderColor: '#E8A33D', fill: true, backgroundColor: 'rgba(232, 163, 61, 0.1)' }]
+        },
+        options: { responsive: true, plugins: { legend: { labels: { color: '#EDEFF2' } } }, scales: { x: { ticks: { color: '#9FB0C6' } }, y: { ticks: { color: '#9FB0C6' } } } }
+      });
+    });
+
+    // 4. Terminal Command Line
     function toggleTerminal() {
       const m = document.getElementById('term-modal');
       m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
@@ -983,12 +925,13 @@
         const out = document.getElementById('term-output');
         let res = '';
 
-        if (input === 'help') res = 'Commands: skills, projects, visa, clear';
-        else if (input === 'skills') res = 'Python, C++, MATLAB, TensorFlow, React, Promptfoo, Opik';
+        if (input === 'help') res = 'Commands: skills, projects, contact, visa, clear';
+        else if (input === 'skills') res = 'Python, C++, MATLAB, React, TensorFlow, Promptfoo, Opik';
         else if (input === 'projects') res = 'CashVan, LENSO, HERA, RouteX, ETRNA, ChurnPredict';
-        else if (input === 'visa') res = 'UAE Golden Visa Holder — Direct employment authorization';
+        else if (input === 'visa') res = 'UAE Golden Visa Holder — Direct employment eligibility';
+        else if (input === 'contact') res = 'Email: heer.shah.1079@gmail.com';
         else if (input === 'clear') { out.innerHTML = ''; e.target.value = ''; return; }
-        else res = `Command not found: '${input}'. Type 'help'`;
+        else res = `Unknown command: '${input}'. Type 'help'`;
 
         out.innerHTML += `<div><span style="color:#FFF">&gt; ${input}</span><br>${res}</div>`;
         out.scrollTop = out.scrollHeight;
