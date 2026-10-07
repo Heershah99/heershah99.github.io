@@ -1,513 +1,351 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heer Shah — Autonomous Systems & Computer Engineering</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        * {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        body {
-            background-color: #09090b;
-            color: #fafafa;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glass-card {
-            background: rgba(24, 24, 27, 0.4);
-            border: 1px solid rgba(113, 113, 122, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-2px);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        
-        .skill-badge {
-            display: inline-block;
-            background: rgba(39, 39, 42, 0.6);
-            border: 1px solid rgba(113, 113, 122, 0.3);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.35rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.3) 0%, transparent 100%);
-            margin: 2rem 0;
-        }
-        
-        .highlight-accent {
-            color: #10b981;
-        }
-        
-        a {
-            color: #10b981;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        
-        a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heer Shah | Autonomous &amp; Computer Engineering</title>
+<meta name="description" content="Heer Shah, Autonomous & Computer Engineering student at the University of Wollongong in Dubai. Robotics, autonomous systems, AI and data engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: sticky nav, intro hero, then stacked sections:
+     skills, experience timeline, project cards, achievements, contact. */
+  :root {
+    --bg: #f5f1e8;
+    --surface: #fbf9f3;
+    --fg: #1c1a17;
+    --muted: #6b655a;
+    --line: #d9d2c0;
+    --accent: #1f4d46;
+    --accent-ink: #f5f1e8;
+    --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151512; --surface: #1c1c18; --fg: #ece6d8; --muted: #a39b8a;
+      --line: #34322b; --accent: #7fc4b6; --accent-ink: #11201d;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151512; --surface: #1c1c18; --fg: #ece6d8; --muted: #a39b8a;
+    --line: #34322b; --accent: #7fc4b6; --accent-ink: #11201d;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-inline: clamp(16px, 5vw, 48px);
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin-inline: auto; }
+  section { padding-block: clamp(40px, 7vw, 88px); border-top: 1px solid var(--line); scroll-margin-top: 56px; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    margin-inline: calc(-1 * clamp(16px, 5vw, 48px));
+    padding-inline: clamp(16px, 5vw, 48px);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; }
+  .brand { font-family: var(--display); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; font-size: 1.05rem; }
+  .links { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 28px); flex-wrap: wrap; justify-content: flex-end; }
+  .links a { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+  .links a:hover { color: var(--fg); }
+  .toggle {
+    font: inherit; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    background: transparent; color: var(--fg); border: 1px solid var(--line);
+    padding: 5px 12px; cursor: pointer;
+  }
+  .toggle:hover { border-color: var(--fg); }
+  @media (max-width: 720px) { .links a.hide-s { display: none; } }
+
+  /* Hero */
+  .hero { border-top: 0; max-width: 760px; }
+  .eyebrow { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--accent); margin: 0 0 1rem; }
+  h1 {
+    font-family: var(--display); font-weight: 700; margin: 0;
+    font-size: clamp(2.8rem, 9vw, 5.6rem); line-height: 0.98;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .role { margin: 1.1rem 0 0; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .lede { margin: 1.6rem 0 0; max-width: 58ch; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.8rem; }
+  .btn {
+    display: inline-block; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 11px 22px; border: 1px solid var(--fg);
+  }
+  .btn.solid { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn:hover { opacity: 0.85; }
+
+  /* Section heads */
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1; margin: 0 0 0.4rem; text-wrap: balance; }
+  .kicker { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 2rem; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 28px 40px; }
+  .skills h3 { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 0.7rem; color: var(--accent); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .chips li { font-size: 0.86rem; padding: 3px 11px; border: 1px solid var(--line); background: var(--surface); }
+  .interest { margin-top: 2.2rem; color: var(--muted); max-width: 70ch; }
+  .interest strong { color: var(--fg); font-weight: 500; }
+
+  /* Timeline */
+  .tl { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .tl > li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 32px; padding-block: 22px; border-top: 1px solid var(--line); }
+  .tl > li:first-child { border-top: 0; padding-top: 0; }
+  .when { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 4px; }
+  .tl h3 { font-size: 1.05rem; margin: 0; font-weight: 700; }
+  .org { color: var(--muted); margin: 0 0 0.6rem; font-size: 0.92rem; }
+  .tl ul, .card ul { margin: 0; padding-left: 1.1rem; }
+  .tl li li, .card li { margin-bottom: 0.35rem; }
+  @media (max-width: 640px) { .tl > li { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--line); padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .card h3 { font-family: var(--display); font-size: 1.55rem; line-height: 1.15; margin: 0; font-weight: 700; }
+  .meta { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); margin: 0; letter-spacing: 0.02em; }
+  .badge { align-self: flex-start; margin-top: auto; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; background: var(--accent); color: var(--accent-ink); }
+
+  /* Achievements */
+  .ach { list-style: none; margin: 0; padding: 0; display: grid; }
+  .ach li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding-block: 16px; border-top: 1px solid var(--line); }
+  .ach li:first-child { border-top: 0; }
+  .ach b { font-weight: 700; }
+  .ach span { color: var(--muted); }
+
+  /* Contact */
+  .contact p { max-width: 56ch; margin: 0 0 1.6rem; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px 20px; }
+  .contact dt { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
+  .contact dd a { text-underline-offset: 3px; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full z-50 glass-card">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-bold text-lg gradient-text">HS</div>
-            <div class="flex gap-6 text-sm">
-                <a href="#profile">Profile</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Heer Shah</a>
+    <nav class="links" aria-label="Sections">
+      <a class="hide-s" href="#skills">Skills</a>
+      <a class="hide-s" href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a class="hide-s" href="#achievements">Awards</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle" id="theme" type="button" aria-label="Switch between light and dark theme">Theme</button>
     </nav>
+  </div>
+</header>
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-32">
-        
-        <!-- Header Section -->
-        <section id="profile" class="mb-16">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h1 class="text-5xl md:text-6xl font-bold mb-2">Heer Shah</h1>
-                    <h2 class="text-xl text-zinc-400 mb-4">Autonomous Systems & Computer Engineering</h2>
-                    <div class="flex gap-3 mb-6 flex-wrap">
-                        <span class="skill-badge highlight-accent">AI & ML Engineering</span>
-                        <span class="skill-badge highlight-accent">Robotics</span>
-                        <span class="skill-badge highlight-accent">Autonomous Systems</span>
-                        <span class="skill-badge highlight-accent">Data Engineering</span>
-                    </div>
-                </div>
-                <div class="text-right text-sm text-zinc-400">
-                    <p>📍 Dubai, UAE</p>
-                    <p class="mt-1">🏆 UAE Golden Visa Holder</p>
-                    <p class="mt-4 highlight-accent font-semibold">1st Place — National AI Hackathon</p>
-                </div>
-            </div>
-            
-            <div class="glass-card p-6 rounded-lg mb-8">
-                <p class="text-zinc-300 leading-relaxed mb-4">
-                    Third-year Bachelor of Engineering (Honours) student at the University of Wollongong in Dubai, building toward quantum-enabled autonomous robotic systems. Hands-on experience integrating software, sensors, and data-driven methods into working systems—from GPU-free Raspberry Pi speech-to-sign pipelines to space debris-tracking platforms and transport optimization systems. Proven track record in AI/ML development, embedded systems, and robotics engineering.
-                </p>
-                <div class="flex gap-4 flex-wrap text-sm">
-                    <a href="mailto:heer.shah.1079@gmail.com">✉️ Email</a>
-                    <a href="https://linkedin.com/in/heer-shah-237a25360/">💼 LinkedIn</a>
-                    <a href="https://github.com/Heershah99">🐙 GitHub</a>
-                </div>
-            </div>
-        </section>
+<main id="top" class="wrap">
 
-        <div class="section-divider"></div>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">UAE Golden Visa Holder &middot; Dubai, UAE</p>
+      <h1>Heer<br>Shah</h1>
+      <p class="role">Autonomous &amp; Computer Engineering &middot; Robotics &middot; AI</p>
+      <p class="lede">Third-year Autonomous &amp; Computer Engineering student at the University of Wollongong in Dubai, building toward autonomous robotic systems powered by emerging technology. I combine software, sensors and data-driven methods into working systems, from a GPU-free Raspberry Pi speech-to-sign pipeline to a space debris-tracking platform and a transport platform that cut school-zone congestion by 65%.</p>
+      <div class="cta">
+        <a class="btn solid" href="#projects">See my projects</a>
+        <a class="btn" href="Heer_Shah_CV.pdf">Download résumé</a>
+        <a class="btn" href="https://www.linkedin.com/in/heer-shah-237a25360/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
-        <!-- Education -->
-        <section id="education" class="mb-16">
-            <h3 class="text-2xl font-bold mb-6 highlight-accent">Education</h3>
-            
-            <div class="glass-card p-6 rounded-lg hover-lift mb-4">
-                <div class="flex justify-between items-start mb-2">
-                    <div>
-                        <h4 class="font-semibold text-lg">B.Eng. (Honours), Autonomous & Computer Engineering</h4>
-                        <p class="text-zinc-400">University of Wollongong in Dubai (UOWD)</p>
-                    </div>
-                    <span class="text-sm text-zinc-500 mono">Sep 2024 – Sep 2028</span>
-                </div>
-                <p class="text-sm text-zinc-400">Expected First Class Honours • Dubai, UAE</p>
-            </div>
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="kicker">What I build with</p>
+    <div class="skills">
+      <div>
+        <h3>Robotics &amp; Autonomy</h3>
+        <ul class="chips"><li>Autonomous Systems</li><li>Robotics</li><li>Embedded Systems</li><li>Raspberry Pi</li><li>Sensors</li><li>Control</li><li>Hardware/Software Integration</li></ul>
+      </div>
+      <div>
+        <h3>AI &amp; Machine Learning</h3>
+        <ul class="chips"><li>Python</li><li>TensorFlow/Keras</li><li>Scikit-Learn</li><li>NLP</li><li>Computer Vision</li><li>Generative AI</li><li>Predictive Modelling</li><li>LLM Evaluation</li><li>Promptfoo</li><li>Opik</li></ul>
+      </div>
+      <div>
+        <h3>Data Engineering</h3>
+        <ul class="chips"><li>Pandas</li><li>NumPy</li><li>MATLAB</li><li>Google Colab</li><li>Data Pipelines</li><li>Data Cleaning</li><li>Statistical Analysis</li><li>Forecasting</li></ul>
+      </div>
+      <div>
+        <h3>Development &amp; Cloud</h3>
+        <ul class="chips"><li>C++</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Flask</li><li>REST APIs</li><li>Git/GitHub</li><li>Azure</li><li>Power BI</li><li>SharePoint</li><li>SAP S/4HANA Cloud</li></ul>
+      </div>
+    </div>
+    <p class="interest"><strong>Areas of interest:</strong> emerging technology for autonomous systems, robotics, space systems and intelligent infrastructure.</p>
+  </section>
 
-            <div class="glass-card p-6 rounded-lg hover-lift">
-                <div class="flex justify-between items-start mb-2">
-                    <div>
-                        <h4 class="font-semibold text-lg">Zaka Machine Learning Certification</h4>
-                        <p class="text-zinc-400">Capstone: LSTM-based demand forecasting (CashVan)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Experience -->
-        <section id="experience" class="mb-16">
-            <h3 class="text-2xl font-bold mb-6 highlight-accent">Experience</h3>
-            
-            <div class="space-y-4">
-                <div class="glass-card p-6 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-semibold text-lg">Research Intern — Data-Driven Human Cardiac Motion</h4>
-                        <span class="text-xs highlight-accent mono">2026–Present</span>
-                    </div>
-                    <p class="text-zinc-400 mb-3">Faculty-Supervised Research</p>
-                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
-                        <li>Analysing human cardiac motion for low-frequency energy harvesting in implantable pacemaker applications</li>
-                        <li>Processing multi-subject datasets in Python, MATLAB and Google Colab</li>
-                        <li>Extracting displacement, velocity, acceleration and frequency characteristics for engineering interpretation</li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-semibold text-lg">AI Intern & Zaka AI Ambassador</h4>
-                        <span class="text-xs highlight-accent mono">Jul 2025 – Sep 2025</span>
-                    </div>
-                    <p class="text-zinc-400 mb-3">Zaka AI, Dubai</p>
-                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
-                        <li>Evaluated and optimized LLM applications using Promptfoo and Opik, analysing model performance and reliability</li>
-                        <li>Developed enterprise AI solution integrating Azure, Power BI and SharePoint for data-driven business workflows</li>
-                        <li>Applied AI evaluation, data analysis and application development to practical business use cases</li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-semibold text-lg">Robotics & Automation Intern</h4>
-                        <span class="text-xs highlight-accent mono">Aug 2026</span>
-                    </div>
-                    <p class="text-zinc-400 mb-3">CodeAlpha</p>
-                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
-                        <li>Developed robotics and automation solutions involving hardware/software integration, control logic and troubleshooting</li>
-                        <li>Applied engineering problem-solving to integrate physical and software components</li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-semibold text-lg">SAP Dual Studies Program Participant</h4>
-                        <span class="text-xs highlight-accent mono">2026</span>
-                    </div>
-                    <p class="text-zinc-400 mb-3">SAP</p>
-                    <p class="text-sm text-zinc-400">Completed training in SAP S/4HANA Cloud Public Edition and enterprise cloud systems</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Featured Projects -->
-        <section id="projects" class="mb-16">
-            <h3 class="text-2xl font-bold mb-6 highlight-accent">Featured Projects</h3>
-            
-            <div class="space-y-4">
-                <!-- ETRNA -->
-                <div class="glass-card p-8 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-1">ETRNA — AI Smart Energy Advisor</h4>
-                            <p class="text-zinc-400 text-sm">Microsoft & Zaka AI National Hackathon</p>
-                        </div>
-                        <span class="px-3 py-1 bg-emerald-950/30 border border-emerald-500/30 rounded text-xs font-semibold highlight-accent">🥇 1st Place</span>
-                    </div>
-                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
-                        Developed an AI-powered household energy forecasting and recommendation system with Arabic-language support. Won 1st Place at the National AI Hackathon with 100+ participants.
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">TensorFlow</span>
-                        <span class="skill-badge">NLP</span>
-                        <span class="skill-badge">Azure</span>
-                    </div>
-                    <span class="text-xs text-zinc-500 mt-4 block">June 2025</span>
-                </div>
-
-                <!-- HERA -->
-                <div class="glass-card p-8 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-1">HERA — AI Space Domain Awareness System</h4>
-                            <p class="text-zinc-400 text-sm">Project Lead | Supernova Hackathon Finalist (Top 10)</p>
-                        </div>
-                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-700/50 rounded text-xs highlight-accent">Apr 2025</span>
-                    </div>
-                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
-                        Led development of an AI-enabled platform for satellite tracking, debris detection and collision prediction. Integrated live NASA/CelesTrak APIs with real-time data processing and visualization. Responsible for system architecture and full-stack implementation.
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">NASA API</span>
-                        <span class="skill-badge">TensorFlow</span>
-                        <span class="skill-badge">Real-time Processing</span>
-                    </div>
-                </div>
-
-                <!-- LENSO -->
-                <div class="glass-card p-8 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-1">LENSO Avatar — Real-Time Speech-to-Sign System</h4>
-                            <p class="text-zinc-400 text-sm">Engineering Project</p>
-                        </div>
-                        <span class="px-3 py-1 bg-amber-950/30 border border-amber-600/30 rounded text-xs font-semibold text-amber-300">🥉 Bronze Medal</span>
-                    </div>
-                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
-                        Built a GPU-free Raspberry Pi pipeline integrating Vosk speech recognition, NLP, sign-gloss generation, SiGML rendering, WebSockets and browser-based 3D visualization. Demonstrates edge AI optimization on constrained hardware.
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="skill-badge">Raspberry Pi</span>
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Whisper STT</span>
-                        <span class="skill-badge">NLP Pipeline</span>
-                        <span class="skill-badge">WebSockets</span>
-                    </div>
-                    <span class="text-xs text-zinc-500 mt-4 block">May 2026</span>
-                </div>
-
-                <!-- CashVan -->
-                <div class="glass-card p-8 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-1">CashVan — Inventory Intelligence System</h4>
-                            <p class="text-zinc-400 text-sm">Data Engineering & ML Pipeline</p>
-                        </div>
-                        <span class="px-3 py-1 bg-blue-950/30 border border-blue-600/30 rounded text-xs text-blue-300">📝 IEEE Published</span>
-                    </div>
-                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
-                        Processed 1,067,371 retail transactions with comprehensive data cleaning and transformation (247,389 missing values, 34,335 duplicates → 779,425 cleaned records). Developed LSTM and Prophet forecasting models achieving MAE of 2,561.82 and 4,376.15 respectively. Paper accepted to IEEE conference.
-                    </p>
-                    <div class="flex gap-2 flex-wrap">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">LSTM</span>
-                        <span class="skill-badge">Prophet</span>
-                        <span class="skill-badge">Pandas</span>
-                        <span class="skill-badge">Data Pipelines</span>
-                    </div>
-                    <span class="text-xs text-zinc-500 mt-4 block">July 2026</span>
-                </div>
-
-                <!-- routeX -->
-                <div class="glass-card p-8 rounded-lg hover-lift">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-1">routeX — Intelligent Transport Platform</h4>
-                            <p class="text-zinc-400 text-sm">RTA Bounty Challenge | UOWD</p>
-                        </div>
-                        <span class="px-3 py-1 bg-teal-950/30 border border-teal-600/30 rounded text-xs text-teal-300">🎯 In Production</span>
-                    </div>
-                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
-                        Developed a pure software platform addressing school transportation inefficiencies without infrastructure changes. Implemented real-time dashboards, live bus tracking and AI-driven scheduling for parents, schools and RTA stakeholders. Achieved reported reductions of 65% in school traffic congestion and 78% in bus route delays.
-                    </p>
-                    <div class="flex gap-4 mt-4">
-                        <div class="flex-1 text-center p-3 bg-zinc-900/50 border border-zinc-800/50 rounded">
-                            <div class="text-lg font-bold highlight-accent">-65%</div>
-                            <div class="text-xs text-zinc-500 uppercase">Traffic Reduction</div>
-                        </div>
-                        <div class="flex-1 text-center p-3 bg-zinc-900/50 border border-zinc-800/50 rounded">
-                            <div class="text-lg font-bold highlight-accent">-78%</div>
-                            <div class="text-xs text-zinc-500 uppercase">Delay Reduction</div>
-                        </div>
-                    </div>
-                    <div class="flex gap-2 flex-wrap mt-4">
-                        <span class="skill-badge">React</span>
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Real-time Scheduling</span>
-                        <span class="skill-badge">AI/ML</span>
-                    </div>
-                    <span class="text-xs text-zinc-500 mt-4 block">2026</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Skills -->
-        <section id="skills" class="mb-16">
-            <h3 class="text-2xl font-bold mb-6 highlight-accent">Technical Skills</h3>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">Robotics & Autonomy</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Autonomous Systems</span>
-                        <span class="skill-badge">Robotics</span>
-                        <span class="skill-badge">Embedded Systems</span>
-                        <span class="skill-badge">Raspberry Pi</span>
-                        <span class="skill-badge">Sensors</span>
-                        <span class="skill-badge">ROS</span>
-                        <span class="skill-badge">Control Systems</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">AI & Machine Learning</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">TensorFlow/Keras</span>
-                        <span class="skill-badge">Scikit-Learn</span>
-                        <span class="skill-badge">NLP</span>
-                        <span class="skill-badge">Computer Vision</span>
-                        <span class="skill-badge">Predictive Modelling</span>
-                        <span class="skill-badge">LLM Evaluation</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">Data Engineering</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Pandas</span>
-                        <span class="skill-badge">NumPy</span>
-                        <span class="skill-badge">Data Pipelines</span>
-                        <span class="skill-badge">MATLAB</span>
-                        <span class="skill-badge">Statistical Analysis</span>
-                        <span class="skill-badge">Google Colab</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">Cloud & Enterprise</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Azure</span>
-                        <span class="skill-badge">Power BI</span>
-                        <span class="skill-badge">SharePoint</span>
-                        <span class="skill-badge">SAP S/4HANA</span>
-                        <span class="skill-badge">Git/GitHub</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">Development</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">C++</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">TypeScript</span>
-                        <span class="skill-badge">React</span>
-                        <span class="skill-badge">Flask</span>
-                        <span class="skill-badge">REST APIs</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="font-semibold mb-4 text-emerald-300">Evaluation Tools</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge">Promptfoo</span>
-                        <span class="skill-badge">Opik</span>
-                        <span class="skill-badge">Generative AI</span>
-                        <span class="skill-badge">Qiskit</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 glass-card p-6 rounded-lg border-l-2 border-l-emerald-500">
-                <h4 class="font-semibold mb-2 text-emerald-300">Areas of Interest</h4>
-                <p class="text-zinc-400">Quantum computing for autonomous systems, robotics, space systems, intelligent infrastructure, and edge AI optimization</p>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Achievements -->
-        <section id="achievements" class="mb-16">
-            <h3 class="text-2xl font-bold mb-6 highlight-accent">Achievements & Recognition</h3>
-            
-            <div class="space-y-3">
-                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
-                    <span class="text-xl">🥇</span>
-                    <div>
-                        <p class="font-semibold">1st Place — National AI Hackathon</p>
-                        <p class="text-sm text-zinc-400">Microsoft & Zaka AI | 100+ participants | ETRNA Project</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
-                    <span class="text-xl">📝</span>
-                    <div>
-                        <p class="font-semibold">IEEE Conference Paper — Accepted</p>
-                        <p class="text-sm text-zinc-400">Advanced Science and Engineering Technology | CashVan Project</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
-                    <span class="text-xl">🥉</span>
-                    <div>
-                        <p class="font-semibold">Bronze Medal — LENSO</p>
-                        <p class="text-sm text-zinc-400">Engineering Project Award</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
-                    <span class="text-xl">🤖</span>
-                    <div>
-                        <p class="font-semibold">Silver Medal — Robotics Workshop</p>
-                        <p class="text-sm text-zinc-400">Functional autonomous robot design and programming</p>
-                    </div>
-                </div>
-
-                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
-                    <span class="text-xl">🌟</span>
-                    <div>
-                        <p class="font-semibold">Tech AI Ambassador</p>
-                        <p class="text-sm text-zinc-400">UAE Golden Visa Holder | Independent Work Authorization</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Contact Footer -->
-        <section id="contact" class="mb-16">
-            <div class="glass-card p-8 rounded-lg text-center">
-                <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
-                <p class="text-zinc-400 mb-6">Open to opportunities in AI, robotics, autonomous systems, and deep-tech innovation.</p>
-                <div class="flex justify-center gap-6 flex-wrap">
-                    <a href="mailto:heer.shah.1079@gmail.com" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
-                        📧 Email
-                    </a>
-                    <a href="https://linkedin.com/in/heer-shah-237a25360/" target="_blank" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
-                        💼 LinkedIn
-                    </a>
-                    <a href="https://github.com/Heershah99" target="_blank" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
-                        🐙 GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <div class="text-center text-xs text-zinc-600 py-8">
-            <p>© 2026 Heer Shah. Built with modern web technologies.</p>
+  <section id="experience">
+    <h2>Experience &amp; Education</h2>
+    <p class="kicker">Where I have worked and studied</p>
+    <ul class="tl">
+      <li>
+        <div class="when">Sep 2024 &ndash; Sep 2028</div>
+        <div>
+          <h3>B.Eng. (Honours), Autonomous &amp; Computer Engineering</h3>
+          <p class="org">University of Wollongong in Dubai (UOWD), Dubai, UAE &middot; Predicted First Class Honours</p>
+          <ul><li>Zaka Machine Learning Certification. Capstone: LSTM-based demand forecasting (CashVan).</li></ul>
         </div>
-    </main>
+      </li>
+      <li>
+        <div class="when">2026 &ndash; Present</div>
+        <div>
+          <h3>Research Intern, Data-Driven Human Cardiac Motion</h3>
+          <p class="org">Faculty-supervised research</p>
+          <ul>
+            <li>Analyse human cardiac motion for low-frequency energy harvesting in implantable pacemaker applications.</li>
+            <li>Process multi-subject datasets in Python, MATLAB and Google Colab, extracting displacement, velocity, acceleration and frequency characteristics.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Aug 2026</div>
+        <div>
+          <h3>Robotics &amp; Automation Intern</h3>
+          <p class="org">CodeAlpha</p>
+          <ul><li>Developed automation solutions involving software implementation, hardware/software integration, control logic, testing and troubleshooting.</li></ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Jul 2025 &ndash; Sep 2025</div>
+        <div>
+          <h3>AI Intern &amp; Zaka AI Ambassador</h3>
+          <p class="org">Zaka AI, Dubai</p>
+          <ul>
+            <li>Evaluated and optimized LLM applications using Promptfoo and Opik, analysing model performance and reliability.</li>
+            <li>Built an enterprise AI solution integrating Azure, Power BI and SharePoint for data-driven business workflows.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Jul 2026</div>
+        <div>
+          <h3>SAP Dual Studies Program Participant</h3>
+          <p class="org">SAP</p>
+          <ul><li>Completed training in SAP S/4HANA Cloud Public Edition, enterprise processes and digital business systems.</li></ul>
+        </div>
+      </li>
+    </ul>
+  </section>
 
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="kicker">Selected work</p>
+    <div class="grid">
+
+      <article class="card">
+        <h3>Intelligent Transport Platform</h3>
+        <p class="meta">Bounty Challenge &middot; UOWD with RTA &middot; 2026</p>
+        <ul>
+          <li>Software-only platform addressing school transportation inefficiencies without infrastructure changes.</li>
+          <li>Real-time dashboards, live bus tracking and AI-driven scheduling for parents, schools and RTA stakeholders.</li>
+          <li>Reported reductions of 65% in school traffic congestion and 78% in bus delays.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>LENSO Avatar</h3>
+        <p class="meta">Real-time speech-to-sign language &middot; May 2026</p>
+        <ul>
+          <li>GPU-free Raspberry Pi pipeline integrating Vosk speech recognition, NLP, intent classification, sign-gloss generation, SiGML, WebSockets and browser-based 3D visualization.</li>
+        </ul>
+        <span class="badge">Bronze Medal</span>
+      </article>
+
+      <article class="card">
+        <h3>HERA</h3>
+        <p class="meta">AI space domain awareness &middot; Project Lead &middot; 2025</p>
+        <ul>
+          <li>Led a platform for satellite tracking, debris detection and collision prediction using live NASA and CelesTrak data.</li>
+          <li>Integrated APIs, data processing, AI analysis and real-time visualization.</li>
+        </ul>
+        <span class="badge">Supernova Hackathon Finalist, Top 10</span>
+      </article>
+
+      <article class="card">
+        <h3>ETRNA</h3>
+        <p class="meta">AI smart energy advisor &middot; Microsoft &amp; Zaka AI National Hackathon &middot; Jun 2025</p>
+        <ul>
+          <li>AI-based household energy forecasting and recommendations, with Arabic-language support.</li>
+        </ul>
+        <span class="badge">1st Place, 100+ participants</span>
+      </article>
+
+      <article class="card">
+        <h3>CashVan</h3>
+        <p class="meta">Inventory intelligence system &middot; 2026</p>
+        <ul>
+          <li>Processed 1,067,371 retail transactions: handled 247,389 missing values and 34,335 duplicate records, leaving 779,425 cleaned records.</li>
+          <li>Built LSTM and Prophet forecasting models with MAE of 2,561.82 and 4,376.15.</li>
+        </ul>
+        <span class="badge">IEEE (ASET) Paper Accepted</span>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <p class="kicker">Recognition</p>
+    <ul class="ach">
+      <li><b>1st Place, National AI Hackathon</b><span>Microsoft &amp; Zaka AI &middot; ETRNA &middot; 100+ participants</span></li>
+      <li><b>IEEE Conference Paper, Accepted</b><span>Advanced Science and Engineering Technology (ASET) &middot; CashVan</span></li>
+      <li><b>Bronze Medal</b><span>LENSO</span></li>
+      <li><b>Silver Medal</b><span>Robotics Workshop &middot; built and programmed a functional autonomous robot</span></li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p class="kicker">Open to internships, research and collaboration</p>
+    <p>If you are working on robotics, autonomous systems or applied AI and want to talk, send me a message.</p>
+    <dl>
+      <dt>Email</dt><dd><a href="mailto:heer.shah.1079@gmail.com">heer.shah.1079@gmail.com</a></dd>
+      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/heer-shah-237a25360/" target="_blank" rel="noopener">linkedin.com/in/heer-shah-237a25360</a></dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/Heershah99" target="_blank" rel="noopener">github.com/Heershah99</a></dd>
+      <dt>Location</dt><dd>Dubai, UAE</dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>&copy; <span id="y">2026</span> Heer Shah</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('theme');
+    try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = dark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
