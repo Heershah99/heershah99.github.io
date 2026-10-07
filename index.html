@@ -3,139 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heer Shah — Autonomous Systems & Quantum ML</title>
-    <script src="https://jsdelivr.net"></script>
+    <title>Heer Shah — Autonomous Systems & Computer Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
         body {
             background-color: #09090b;
             color: #fafafa;
-            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .framer-glow {
-            position: relative;
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        /* Framer Mouse-Tracking Spotlight Dynamic Layer */
-        .framer-glow::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(16, 185, 129, 0.08), transparent 80%);
-            z-index: 1;
-            pointer-events: none;
-            border-radius: inherit;
-            transition: opacity 0.5s ease;
+        
+        .glass-card {
+            background: rgba(24, 24, 27, 0.4);
+            border: 1px solid rgba(113, 113, 122, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: rgba(39, 39, 42, 0.6);
+            border: 1px solid rgba(113, 113, 122, 0.3);
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.3) 0%, transparent 100%);
+            margin: 2rem 0;
+        }
+        
+        .highlight-accent {
+            color: #10b981;
+        }
+        
+        a {
+            color: #10b981;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
     </style>
 </head>
-<body class="framer-glow min-h-screen selection:bg-emerald-500 selection:text-black antialiased overflow-x-hidden">
+<body>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 glass-card">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-bold text-lg gradient-text">HS</div>
+            <div class="flex gap-6 text-sm">
+                <a href="#profile">Profile</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Subtle background noise/grid overlay -->
-    <div class="fixed inset-0 bg-[linear-gradient(to_right,#1f29370a_1px,transparent_1px),linear-gradient(to_bottom,#1f29370a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events:none; z-index: 0;"></div>
-
-    <main class="relative z-10 max-w-5xl mx-auto px-6 py-24 space-y-12">
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-32">
         
-        <!-- Framer Hero Block -->
-        <div class="space-y-6 max-w-2xl">
-            <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-3 py-1 text-xs font-mono text-zinc-400">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Tech AI Ambassador · UAE Golden Visa Holder
+        <!-- Header Section -->
+        <section id="profile" class="mb-16">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-2">Heer Shah</h1>
+                    <h2 class="text-xl text-zinc-400 mb-4">Autonomous Systems & Computer Engineering</h2>
+                    <div class="flex gap-3 mb-6 flex-wrap">
+                        <span class="skill-badge highlight-accent">AI & ML Engineering</span>
+                        <span class="skill-badge highlight-accent">Robotics</span>
+                        <span class="skill-badge highlight-accent">Autonomous Systems</span>
+                        <span class="skill-badge highlight-accent">Data Engineering</span>
+                    </div>
+                </div>
+                <div class="text-right text-sm text-zinc-400">
+                    <p>📍 Dubai, UAE</p>
+                    <p class="mt-1">🏆 UAE Golden Visa Holder</p>
+                    <p class="mt-4 highlight-accent font-semibold">1st Place — National AI Hackathon</p>
+                </div>
             </div>
-            <h1 class="text-5xl font-bold tracking-tight text-white sm:text-6xl font-sans">
-                Engineering autonomous systems for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">quantum frontier</span>.
-            </h1>
-            <p class="text-zinc-400 text-lg leading-relaxed">
-                Autonomous & Computer Engineering student at UOWD. Shipping high-performance machine learning architectures, embedded edge systems, and predictive algorithms in total execution.
-            </p>
-        </div>
-
-        <!-- The Framer Bento Grid Architecture -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             
-            <!-- Grid 1: HERA (Large Showcase Feature) -->
-            <div class="md:col-span-2 p-8 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl backdrop-blur-md flex flex-col justify-between space-y-6 hover:border-zinc-700/60 transition-all duration-300 group">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-start">
-                        <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">// Project Lead</span>
-                        <span class="text-xs text-zinc-500 font-mono">Apr 2025</span>
-                    </div>
-                    <h3 class="text-2xl font-semibold text-white tracking-tight group-hover:text-emerald-400 transition-colors">HERA — Space Domain Awareness AI</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Led system architecture for a high-volume pipeline ingesting live orbital telemetry via NASA CelesTrak APIs. Designed real-time debris tracking and localized collision prediction systems.
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-4">
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">Python</span>
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">TensorFlow</span>
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">NASA API</span>
+            <div class="glass-card p-6 rounded-lg mb-8">
+                <p class="text-zinc-300 leading-relaxed mb-4">
+                    Third-year Bachelor of Engineering (Honours) student at the University of Wollongong in Dubai, building toward quantum-enabled autonomous robotic systems. Hands-on experience integrating software, sensors, and data-driven methods into working systems—from GPU-free Raspberry Pi speech-to-sign pipelines to space debris-tracking platforms and transport optimization systems. Proven track record in AI/ML development, embedded systems, and robotics engineering.
+                </p>
+                <div class="flex gap-4 flex-wrap text-sm">
+                    <a href="mailto:heer.shah.1079@gmail.com">✉️ Email</a>
+                    <a href="https://linkedin.com/in/heer-shah-237a25360/">💼 LinkedIn</a>
+                    <a href="https://github.com/Heershah99">🐙 GitHub</a>
                 </div>
             </div>
+        </section>
 
+        <div class="section-divider"></div>
+
+        <!-- Education -->
+        <section id="education" class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 highlight-accent">Education</h3>
             
-            <div class="p-8 bg-gradient-to-b from-zinc-900/80 to-zinc-900/20 border border-zinc-800/60 rounded-2xl backdrop-blur-md flex flex-col justify-between hover:border-zinc-700/60 transition-all duration-300">
-                <div class="space-y-2">
-                    <h4 class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Status</h4>
-                    <div class="text-xl font-medium text-zinc-200">Independent Status</div>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Legally authorized to activate research partnerships or deep-tech corporate tracks instantly with zero logistics overhead.</p>
+            <div class="glass-card p-6 rounded-lg hover-lift mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <h4 class="font-semibold text-lg">B.Eng. (Honours), Autonomous & Computer Engineering</h4>
+                        <p class="text-zinc-400">University of Wollongong in Dubai (UOWD)</p>
+                    </div>
+                    <span class="text-sm text-zinc-500 mono">Sep 2024 – Sep 2028</span>
                 </div>
-                <div class="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-4 text-center mt-6">
-                    <span class="block text-xl font-bold text-emerald-400">GOLDEN VISA</span>
-                    <span class="text-[10px] uppercase font-mono text-zinc-400 tracking-widest">No Sponsorship Required</span>
-                </div>
+                <p class="text-sm text-zinc-400">Expected First Class Honours • Dubai, UAE</p>
             </div>
 
-            <!-- Grid 3: Core Runtime Tech Stack -->
-            <div class="p-8 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl backdrop-blur-md flex flex-col justify-between hover:border-zinc-700/60 transition-all duration-300">
-                <div class="space-y-4">
-                    <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">// Core Runtime</span>
-                    <div class="grid grid-cols-2 gap-2 text-xs font-mono">
-                        <div class="p-2 bg-zinc-900/60 border border-zinc-800/40 rounded text-center text-zinc-300">C++</div>
-                        <div class="p-2 bg-zinc-900/60 border border-zinc-800/40 rounded text-center text-zinc-300">Python</div>
-                        <div class="p-2 bg-zinc-900/60 border border-zinc-800/40 rounded text-center text-zinc-300">Qiskit</div>
-                        <div class="p-2 bg-zinc-900/60 border border-zinc-800/40 rounded text-center text-zinc-300">ROS</div>
+            <div class="glass-card p-6 rounded-lg hover-lift">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <h4 class="font-semibold text-lg">Zaka Machine Learning Certification</h4>
+                        <p class="text-zinc-400">Capstone: LSTM-based demand forecasting (CashVan)</p>
                     </div>
-                </div>
-                <div class="text-[11px] font-mono text-zinc-500 pt-4 border-t border-zinc-800/50">
-                    Targeting: Quantum Control & Robotics
                 </div>
             </div>
+        </section>
 
-            <!-- Grid 4: LENSO (Edge AI Feature) -->
-            <div class="md:col-span-2 p-8 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl backdrop-blur-md flex flex-col justify-between space-y-6 hover:border-zinc-700/60 transition-all duration-300 group">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-start">
-                        <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">// Edge AI Engineering</span>
-                        <span class="text-xs text-zinc-500 font-mono">2026</span>
+        <div class="section-divider"></div>
+
+        <!-- Experience -->
+        <section id="experience" class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 highlight-accent">Experience</h3>
+            
+            <div class="space-y-4">
+                <div class="glass-card p-6 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-semibold text-lg">Research Intern — Data-Driven Human Cardiac Motion</h4>
+                        <span class="text-xs highlight-accent mono">2026–Present</span>
                     </div>
-                    <h3 class="text-2xl font-semibold text-white tracking-tight group-hover:text-emerald-400 transition-colors">LENSO — Real-Time Speech-to-Sign</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Engineered a localized natural language processing layer optimized completely for local hardware constraints on a Raspberry Pi infrastructure. Implemented fuzzy correction arrays and structural intent classification models.
+                    <p class="text-zinc-400 mb-3">Faculty-Supervised Research</p>
+                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                        <li>Analysing human cardiac motion for low-frequency energy harvesting in implantable pacemaker applications</li>
+                        <li>Processing multi-subject datasets in Python, MATLAB and Google Colab</li>
+                        <li>Extracting displacement, velocity, acceleration and frequency characteristics for engineering interpretation</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-semibold text-lg">AI Intern & Zaka AI Ambassador</h4>
+                        <span class="text-xs highlight-accent mono">Jul 2025 – Sep 2025</span>
+                    </div>
+                    <p class="text-zinc-400 mb-3">Zaka AI, Dubai</p>
+                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                        <li>Evaluated and optimized LLM applications using Promptfoo and Opik, analysing model performance and reliability</li>
+                        <li>Developed enterprise AI solution integrating Azure, Power BI and SharePoint for data-driven business workflows</li>
+                        <li>Applied AI evaluation, data analysis and application development to practical business use cases</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-semibold text-lg">Robotics & Automation Intern</h4>
+                        <span class="text-xs highlight-accent mono">Aug 2026</span>
+                    </div>
+                    <p class="text-zinc-400 mb-3">CodeAlpha</p>
+                    <ul class="text-sm text-zinc-400 space-y-1 list-disc list-inside">
+                        <li>Developed robotics and automation solutions involving hardware/software integration, control logic and troubleshooting</li>
+                        <li>Applied engineering problem-solving to integrate physical and software components</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-semibold text-lg">SAP Dual Studies Program Participant</h4>
+                        <span class="text-xs highlight-accent mono">2026</span>
+                    </div>
+                    <p class="text-zinc-400 mb-3">SAP</p>
+                    <p class="text-sm text-zinc-400">Completed training in SAP S/4HANA Cloud Public Edition and enterprise cloud systems</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Featured Projects -->
+        <section id="projects" class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 highlight-accent">Featured Projects</h3>
+            
+            <div class="space-y-4">
+                <!-- ETRNA -->
+                <div class="glass-card p-8 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-1">ETRNA — AI Smart Energy Advisor</h4>
+                            <p class="text-zinc-400 text-sm">Microsoft & Zaka AI National Hackathon</p>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-950/30 border border-emerald-500/30 rounded text-xs font-semibold highlight-accent">🥇 1st Place</span>
+                    </div>
+                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
+                        Developed an AI-powered household energy forecasting and recommendation system with Arabic-language support. Won 1st Place at the National AI Hackathon with 100+ participants.
                     </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">NLP</span>
+                        <span class="skill-badge">Azure</span>
+                    </div>
+                    <span class="text-xs text-zinc-500 mt-4 block">June 2025</span>
                 </div>
-                <div class="flex flex-wrap gap-2 pt-2">
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">Whisper STT</span>
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">Raspberry Pi</span>
-                    <span class="bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs px-2.5 py-1 rounded-md font-mono">NLP Pipeline</span>
+
+                <!-- HERA -->
+                <div class="glass-card p-8 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-1">HERA — AI Space Domain Awareness System</h4>
+                            <p class="text-zinc-400 text-sm">Project Lead | Supernova Hackathon Finalist (Top 10)</p>
+                        </div>
+                        <span class="px-3 py-1 bg-zinc-900/50 border border-zinc-700/50 rounded text-xs highlight-accent">Apr 2025</span>
+                    </div>
+                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
+                        Led development of an AI-enabled platform for satellite tracking, debris detection and collision prediction. Integrated live NASA/CelesTrak APIs with real-time data processing and visualization. Responsible for system architecture and full-stack implementation.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">NASA API</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">Real-time Processing</span>
+                    </div>
+                </div>
+
+                <!-- LENSO -->
+                <div class="glass-card p-8 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-1">LENSO Avatar — Real-Time Speech-to-Sign System</h4>
+                            <p class="text-zinc-400 text-sm">Engineering Project</p>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-950/30 border border-amber-600/30 rounded text-xs font-semibold text-amber-300">🥉 Bronze Medal</span>
+                    </div>
+                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
+                        Built a GPU-free Raspberry Pi pipeline integrating Vosk speech recognition, NLP, sign-gloss generation, SiGML rendering, WebSockets and browser-based 3D visualization. Demonstrates edge AI optimization on constrained hardware.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="skill-badge">Raspberry Pi</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Whisper STT</span>
+                        <span class="skill-badge">NLP Pipeline</span>
+                        <span class="skill-badge">WebSockets</span>
+                    </div>
+                    <span class="text-xs text-zinc-500 mt-4 block">May 2026</span>
+                </div>
+
+                <!-- CashVan -->
+                <div class="glass-card p-8 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-1">CashVan — Inventory Intelligence System</h4>
+                            <p class="text-zinc-400 text-sm">Data Engineering & ML Pipeline</p>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-950/30 border border-blue-600/30 rounded text-xs text-blue-300">📝 IEEE Published</span>
+                    </div>
+                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
+                        Processed 1,067,371 retail transactions with comprehensive data cleaning and transformation (247,389 missing values, 34,335 duplicates → 779,425 cleaned records). Developed LSTM and Prophet forecasting models achieving MAE of 2,561.82 and 4,376.15 respectively. Paper accepted to IEEE conference.
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">LSTM</span>
+                        <span class="skill-badge">Prophet</span>
+                        <span class="skill-badge">Pandas</span>
+                        <span class="skill-badge">Data Pipelines</span>
+                    </div>
+                    <span class="text-xs text-zinc-500 mt-4 block">July 2026</span>
+                </div>
+
+                <!-- routeX -->
+                <div class="glass-card p-8 rounded-lg hover-lift">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-1">routeX — Intelligent Transport Platform</h4>
+                            <p class="text-zinc-400 text-sm">RTA Bounty Challenge | UOWD</p>
+                        </div>
+                        <span class="px-3 py-1 bg-teal-950/30 border border-teal-600/30 rounded text-xs text-teal-300">🎯 In Production</span>
+                    </div>
+                    <p class="text-zinc-300 mb-3 text-sm leading-relaxed">
+                        Developed a pure software platform addressing school transportation inefficiencies without infrastructure changes. Implemented real-time dashboards, live bus tracking and AI-driven scheduling for parents, schools and RTA stakeholders. Achieved reported reductions of 65% in school traffic congestion and 78% in bus route delays.
+                    </p>
+                    <div class="flex gap-4 mt-4">
+                        <div class="flex-1 text-center p-3 bg-zinc-900/50 border border-zinc-800/50 rounded">
+                            <div class="text-lg font-bold highlight-accent">-65%</div>
+                            <div class="text-xs text-zinc-500 uppercase">Traffic Reduction</div>
+                        </div>
+                        <div class="flex-1 text-center p-3 bg-zinc-900/50 border border-zinc-800/50 rounded">
+                            <div class="text-lg font-bold highlight-accent">-78%</div>
+                            <div class="text-xs text-zinc-500 uppercase">Delay Reduction</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 flex-wrap mt-4">
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Real-time Scheduling</span>
+                        <span class="skill-badge">AI/ML</span>
+                    </div>
+                    <span class="text-xs text-zinc-500 mt-4 block">2026</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Skills -->
+        <section id="skills" class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 highlight-accent">Technical Skills</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">Robotics & Autonomy</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Autonomous Systems</span>
+                        <span class="skill-badge">Robotics</span>
+                        <span class="skill-badge">Embedded Systems</span>
+                        <span class="skill-badge">Raspberry Pi</span>
+                        <span class="skill-badge">Sensors</span>
+                        <span class="skill-badge">ROS</span>
+                        <span class="skill-badge">Control Systems</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">AI & Machine Learning</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">TensorFlow/Keras</span>
+                        <span class="skill-badge">Scikit-Learn</span>
+                        <span class="skill-badge">NLP</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">Predictive Modelling</span>
+                        <span class="skill-badge">LLM Evaluation</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">Data Engineering</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Pandas</span>
+                        <span class="skill-badge">NumPy</span>
+                        <span class="skill-badge">Data Pipelines</span>
+                        <span class="skill-badge">MATLAB</span>
+                        <span class="skill-badge">Statistical Analysis</span>
+                        <span class="skill-badge">Google Colab</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">Cloud & Enterprise</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Azure</span>
+                        <span class="skill-badge">Power BI</span>
+                        <span class="skill-badge">SharePoint</span>
+                        <span class="skill-badge">SAP S/4HANA</span>
+                        <span class="skill-badge">Git/GitHub</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">Development</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">TypeScript</span>
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Flask</span>
+                        <span class="skill-badge">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h4 class="font-semibold mb-4 text-emerald-300">Evaluation Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Promptfoo</span>
+                        <span class="skill-badge">Opik</span>
+                        <span class="skill-badge">Generative AI</span>
+                        <span class="skill-badge">Qiskit</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Grid 5: routeX / Traffic Congestion (Small Highlight Grid) -->
-            <div class="md:col-span-3 p-8 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl backdrop-blur-md flex flex-col md:flex-row justify-between items-start md:items-center hover:border-zinc-700/60 transition-all duration-300 group gap-6">
-                <div class="space-y-2 max-w-xl">
-                    <span class="text-xs font-mono text-teal-400 uppercase tracking-wider">// RTA Bounty Challenge</span>
-                    <h3 class="text-xl font-semibold text-white tracking-tight group-hover:text-emerald-400 transition-colors">routeX Transit Optimization</h3>
-                    <p class="text-zinc-400 text-sm">Developed a pure software platform that reduced school network traffic gridlock by 65% and cut route delays by 78% via real-time scheduling arrays without modifying hardware footprint.</p>
-                </div>
-                <div class="flex gap-4 font-mono shrink-0">
-                    <div class="text-center p-3 bg-zinc-900/80 border border-zinc-800/60 rounded-xl min-w-[80px]">
-                        <span class="block text-lg font-bold text-white">-65%</span>
-                        <span class="text-[9px] text-zinc-500 uppercase">Traffic</span>
+            <div class="mt-6 glass-card p-6 rounded-lg border-l-2 border-l-emerald-500">
+                <h4 class="font-semibold mb-2 text-emerald-300">Areas of Interest</h4>
+                <p class="text-zinc-400">Quantum computing for autonomous systems, robotics, space systems, intelligent infrastructure, and edge AI optimization</p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Achievements -->
+        <section id="achievements" class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 highlight-accent">Achievements & Recognition</h3>
+            
+            <div class="space-y-3">
+                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
+                    <span class="text-xl">🥇</span>
+                    <div>
+                        <p class="font-semibold">1st Place — National AI Hackathon</p>
+                        <p class="text-sm text-zinc-400">Microsoft & Zaka AI | 100+ participants | ETRNA Project</p>
                     </div>
-                    <div class="text-center p-3 bg-zinc-900/80 border border-zinc-800/60 rounded-xl min-w-[80px]">
-                        <span class="block text-lg font-bold text-emerald-400">-78%</span>
-                        <span class="text-[9px] text-zinc-500 uppercase">Delays</span>
+                </div>
+                
+                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
+                    <span class="text-xl">📝</span>
+                    <div>
+                        <p class="font-semibold">IEEE Conference Paper — Accepted</p>
+                        <p class="text-sm text-zinc-400">Advanced Science and Engineering Technology | CashVan Project</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
+                    <span class="text-xl">🥉</span>
+                    <div>
+                        <p class="font-semibold">Bronze Medal — LENSO</p>
+                        <p class="text-sm text-zinc-400">Engineering Project Award</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
+                    <span class="text-xl">🤖</span>
+                    <div>
+                        <p class="font-semibold">Silver Medal — Robotics Workshop</p>
+                        <p class="text-sm text-zinc-400">Functional autonomous robot design and programming</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 rounded-lg hover-lift flex items-start gap-3">
+                    <span class="text-xl">🌟</span>
+                    <div>
+                        <p class="font-semibold">Tech AI Ambassador</p>
+                        <p class="text-sm text-zinc-400">UAE Golden Visa Holder | Independent Work Authorization</p>
                     </div>
                 </div>
             </div>
+        </section>
 
+        <div class="section-divider"></div>
+
+        <!-- Contact Footer -->
+        <section id="contact" class="mb-16">
+            <div class="glass-card p-8 rounded-lg text-center">
+                <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
+                <p class="text-zinc-400 mb-6">Open to opportunities in AI, robotics, autonomous systems, and deep-tech innovation.</p>
+                <div class="flex justify-center gap-6 flex-wrap">
+                    <a href="mailto:heer.shah.1079@gmail.com" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
+                        📧 Email
+                    </a>
+                    <a href="https://linkedin.com/in/heer-shah-237a25360/" target="_blank" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://github.com/Heershah99" target="_blank" class="px-6 py-2 bg-emerald-600/20 border border-emerald-500/50 rounded-lg hover:bg-emerald-600/30 transition">
+                        🐙 GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-zinc-600 py-8">
+            <p>© 2026 Heer Shah. Built with modern web technologies.</p>
         </div>
+    </main>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
